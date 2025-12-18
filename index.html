@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TradeFlow – Booking Off Made Simple</title>
+
+  <meta name="description" content="TradeFlow is a modern booking-off and PDF generation app built for construction workers and contractors." />
+
+  <style>
+    :root {
+      --bg-dark: #0b0d1a;
+      --bg-mid: #1b1c2e;
+      --accent: #9b59b6;
+      --text-main: #ffffff;
+      --text-sub: #cfd2ff;
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #2e3152 0%, var(--bg-dark) 70%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 90px 20px 80px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: var(--text-sub);
+      max-width: 720px;
+      margin: auto;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .sub {
+      color: var(--text-sub);
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 26px;
+      border: 1px solid var(--border);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--text-sub);
+      font-size: 15px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 14px;
+      color: var(--text-main);
+    }
+
+    .muted {
+      color: var(--text-sub);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 50px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #9da0ff;
+      background: #070814;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>TradeFlow</h1>
+  <p>
+    A modern booking-off system built for price-work construction workers.
+    Create booking sheets, calculate totals, and export professional PDFs — without spreadsheets.
+  </p>
+</header>
+
+<section>
+  <h2>Why TradeFlow</h2>
+  <p class="sub">
+    TradeFlow is designed by people who work on site.
+    It removes paperwork friction and helps trades get paid faster with clear, professional booking-off sheets.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Fast Booking Off</h3>
+      <p>Add labour lines, quantities, and rates in seconds — optimised for mobile use on site.</p>
+    </div>
+    <div class="card">
+      <h3>Automatic Totals</h3>
+      <p>No more Excel formulas. Totals, plot values, and splits are calculated instantly.</p>
+    </div>
+    <div class="card">
+      <h3>Professional PDFs</h3>
+      <p>Generate clean, professional PDFs ready to send to contractors or office teams.</p>
+    </div>
+    <div class="card">
+      <h3>Worker Splits</h3>
+      <p>Split totals between workers, apply CIS deductions, and see net figures clearly.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Subscriptions</h2>
+  <p class="sub">
+    TradeFlow offers optional auto-renewing subscriptions to unlock professional features and unlimited PDF generation.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Monthly</h3>
+      <div class="price">£7.99</div>
+      <p class="muted">per month</p>
+      <p>Unlimited PDFs, saved history, and priority updates.</p>
+    </div>
+    <div class="card">
+      <h3>Annual</h3>
+      <div class="price">£69.99</div>
+      <p class="muted">per year</p>
+      <p>Best value. Unlimited PDFs with long-term savings.</p>
+    </div>
+  </div>
+
+  <p class="sub" style="margin-top: 30px;">
+    Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.
+    Manage or cancel subscriptions in your Apple ID account settings.
+  </p>
+</section>
+
+<section>
+  <h2>Privacy</h2>
+  <p class="sub">
+    Your data belongs to you.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Local Data</h3>
+      <p>Booking-off data is stored locally on your device.</p>
+    </div>
+    <div class="card">
+      <h3>No Data Selling</h3>
+      <p>TradeFlow does not sell or share your personal data with third parties.</p>
+    </div>
+    <div class="card">
+      <h3>Minimal Analytics</h3>
+      <p>Anonymous analytics may be used only to improve app stability and performance.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Support</h2>
+  <p class="sub">
+    Need help, support, or want to suggest features?
+  </p>
+  <p>
+    Email: <a href="mailto:support@tradeflow.app">support@tradeflow.app</a>
+  </p>
+</section>
+
+<footer>
+  © 2025 TradeFlow. Built for the trade.
+</footer>
+
+</body>
+</html>
