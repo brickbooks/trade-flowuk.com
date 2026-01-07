@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TradeFlow | Privacy Policy</title>
+  <meta name="description" content="TradeFlow Privacy Policy" />
+  <style>
+    :root{
+      --bg0:#05040a;
+      --bg1:#0b0620;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.60);
+      --accent:#a855f7; /* purple */
+      --accent2:#60a5fa; /* blue */
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:22px;
+      --max:980px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(168,85,247,.28), transparent 55%),
+        radial-gradient(800px 520px at 80% 25%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(900px 600px at 50% 90%, rgba(168,85,247,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      line-height:1.55;
+    }
+
+    a{ color:#d8b4fe; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    header{
+      padding:48px 20px 18px;
+    }
+
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      user-select:none;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:
+        radial-gradient(18px 18px at 35% 35%, rgba(255,255,255,.22), transparent 55%),
+        linear-gradient(135deg, rgba(168,85,247,.95), rgba(96,165,250,.75));
+      box-shadow: 0 10px 30px rgba(168,85,247,.20);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .brandtext{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .brandtext strong{
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .brandtext span{
+      font-size:12px;
+      color:var(--muted2);
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    main{
+      flex:1;
+      padding:0 20px 52px;
+    }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+    }
+
+    .hero{
+      margin-top:18px;
+      padding:28px 26px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(500px 200px at 20% 0%, rgba(168,85,247,.22), transparent 55%),
+        radial-gradient(520px 240px at 85% 15%, rgba(96,165,250,.14), transparent 60%);
+      pointer-events:none;
+      filter:blur(10px);
+      opacity:.9;
+    }
+
+    .hero > *{ position:relative; }
+
+    h1{
+      margin:0 0 8px;
+      font-size:34px;
+      line-height:1.15;
+      letter-spacing:-.3px;
+    }
+
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:70ch;
+    }
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .card{
+      padding:20px 20px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+
+    p{ margin:0 0 12px; color:var(--muted); }
+    ul{ margin:0; padding-left:18px; color:var(--muted); }
+    li{ margin:8px 0; }
+
+    .kvs{
+      display:grid;
+      gap:10px;
+      margin-top:6px;
+    }
+    .kv{
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.18);
+    }
+    .kv b{ color:rgba(255,255,255,.92); }
+    .kv div{ color:var(--muted2); font-size:13px; margin-top:4px; }
+
+    footer{
+      padding:22px 20px 34px;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+    }
+    footer .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .glowline{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(168,85,247,.55), rgba(96,165,250,.45), transparent);
+      opacity:.65;
+      margin:22px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="topbar">
+        <div class="brand" aria-label="TradeFlow">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brandtext">
+            <strong>TradeFlow</strong>
+            <span>Ultra-simple booking-off system</span>
+          </div>
+        </div>
+        <div class="pill">Privacy Policy</div>
+      </div>
+      <div class="container">
+        <div class="hero">
+          <h1>Privacy Policy</h1>
+          <p class="sub">
+            TradeFlow is built to work offline. Your job records, worker details, rates, and history are stored locally on your device.
+            We don’t sell your data.
+          </p>
+          <div class="glowline" aria-hidden="true"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="grid">
+          <section class="card">
+            <h2>What data TradeFlow collects</h2>
+            <p><b>TradeFlow does not collect or transmit your booking-off data to our servers.</b></p>
+            <ul>
+              <li><b>Local-only storage:</b> job info, worker names, rates/prices, totals, PDFs you generate, and history are saved on your device.</li>
+              <li><b>No account required:</b> no sign-up, no login, and no cloud sync by default.</li>
+              <li><b>No tracking:</b> we don’t track you across apps or websites.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>How your data is used</h2>
+            <p>Your data is used only to provide the app’s core features:</p>
+            <div class="kvs">
+              <div class="kv">
+                <b>Booking off</b>
+                <div>Record work completed and calculate totals.</div>
+              </div>
+              <div class="kv">
+                <b>PDF reports</b>
+                <div>Create and export PDF job summaries when you choose.</div>
+              </div>
+              <div class="kv">
+                <b>History</b>
+                <div>Store past jobs and records locally for quick reference.</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>File export & permissions</h2>
+            <p>
+              When you export a PDF, iOS may ask for permission to save or share the file. This is only used to complete the export action you initiated.
+            </p>
+            <ul>
+              <li>TradeFlow requests file access only when you choose to export/share.</li>
+              <li>TradeFlow does not automatically upload files to any server.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>Support & contact</h2>
+            <p>
+              If you contact us for support, we’ll receive the information you send (such as your email and message) so we can respond.
+            </p>
+            <div class="kvs">
+              <div class="kv">
+                <b>Email</b>
+                <div><a href="mailto:support@trade-flowuk.com">support@trade-flowuk.com</a></div>
+              </div>
+              <div class="kv">
+                <b>Company</b>
+                <div>BUILDTECH SOLUTIONS UK LTD (United Kingdom)</div>
+              </div>
+              <div class="kv">
+                <b>Website</b>
+                <div><a href="https://trade-flowuk.com">https://trade-flowuk.com</a></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" style="grid-column:1/-1;">
+            <h2>Changes to this policy</h2>
+            <p>
+              We may update this Privacy Policy as the app evolves. We’ll post updates on this page.
+            </p>
+            <p style="margin-bottom:0;">
+              <b>Effective date:</b> <span id="effectiveDate"></span>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> BUILDTECH SOLUTIONS UK LTD</div>
+        <div>TradeFlow = MoneyFlow</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set dates automatically
+    const d = new Date();
+    document.getElementById("year").textContent = d.getFullYear();
+    // You can hardcode the effective date if you prefer.
+    document.getElementById("effectiveDate").textContent =
+      d.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
+  </script>
+</body>
+</html>
