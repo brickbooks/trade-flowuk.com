@@ -35,7 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* Modern top nav */
     .topbar-wrap {
       position: sticky;
       top: 0;
@@ -90,7 +89,7 @@
 
     a {
       color: var(--accent);
-      text-decoration: none; /* removes underline everywhere */
+      text-decoration: none;
     }
 
     .nav-link {
@@ -105,7 +104,7 @@
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(12px);
       transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
-      text-decoration: none; /* remove underline on About button */
+      text-decoration: none;
     }
 
     .nav-link:hover {
@@ -142,7 +141,7 @@
     .hero-card {
       max-width: 980px;
       margin: 34px auto 0;
-      padding: 22px 22px;
+      padding: 22px;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.14);
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
@@ -257,7 +256,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 18px 18px;
+      padding: 18px;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.07);
@@ -289,7 +288,7 @@
     footer a {
       margin: 0 8px;
       color: rgba(207,210,255,0.95);
-      text-decoration: none; /* remove underline in footer links too */
+      text-decoration: none;
       border-bottom: 1px solid transparent;
     }
 
@@ -306,7 +305,6 @@
 
 <body>
 
-<!-- Modern sticky nav (keeps site feeling modern + gives reviewers clear About/Support links) -->
 <div class="topbar-wrap">
   <div class="topbar">
     <div class="brand" aria-label="TradeFlow by Buildtech Solutions">
@@ -319,6 +317,7 @@
 
     <nav class="nav" aria-label="Primary">
       <a href="/about" class="nav-link">About</a>
+      <a href="/privacy" class="nav-link">Privacy</a>
       <a href="/support" class="nav-link">Support</a>
     </nav>
   </div>
@@ -336,87 +335,13 @@
       TradeFlow is a product developed and operated by <strong>Buildtech Solutions</strong>, a UK-based software and technology company.
     </p>
 
-    <div class="chips" aria-label="Highlights">
-      <span class="chip"><span class="dot" aria-hidden="true"></span>Fast booking-off</span>
-      <span class="chip"><span class="dot" aria-hidden="true"></span>Instant totals</span>
-      <span class="chip"><span class="dot" aria-hidden="true"></span>Professional PDFs</span>
+    <div class="chips">
+      <span class="chip"><span class="dot"></span>Fast booking-off</span>
+      <span class="chip"><span class="dot"></span>Instant totals</span>
+      <span class="chip"><span class="dot"></span>Professional PDFs</span>
     </div>
   </div>
 </header>
-
-<section>
-  <h2>Why TradeFlow</h2>
-  <p class="sub">
-    TradeFlow is designed by people who work on site.
-    It removes paperwork friction and helps trades get paid faster with clear, professional booking-off sheets.
-  </p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Fast Booking Off</h3>
-      <p>Add labour lines, quantities, and rates in seconds — optimised for mobile use on site.</p>
-    </div>
-    <div class="card">
-      <h3>Automatic Totals</h3>
-      <p>No more Excel formulas. Totals, plot values, and splits are calculated instantly.</p>
-    </div>
-    <div class="card">
-      <h3>Professional PDFs</h3>
-      <p>Generate clean, professional PDFs ready to send to contractors or office teams.</p>
-    </div>
-    <div class="card">
-      <h3>Worker Splits</h3>
-      <p>Split totals between workers, apply CIS deductions, and see net figures clearly.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Subscriptions</h2>
-  <p class="sub">
-    TradeFlow offers optional auto-renewing subscriptions to unlock professional features and unlimited PDF generation.
-  </p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Monthly</h3>
-      <div class="price">£7.99</div>
-      <p class="muted">per month</p>
-      <p>Unlimited PDFs, saved history, and priority updates.</p>
-    </div>
-    <div class="card">
-      <h3>Annual</h3>
-      <div class="price">£69.99</div>
-      <p class="muted">per year</p>
-      <p>Best value. Unlimited PDFs with long-term savings.</p>
-    </div>
-  </div>
-
-  <p class="sub" style="margin-top: 30px;">
-    Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.
-    Manage or cancel subscriptions in your Apple ID account settings.
-  </p>
-</section>
-
-<section>
-  <h2>Privacy</h2>
-  <p class="sub">Your data belongs to you.</p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Local Data</h3>
-      <p>Booking-off data is stored locally on your device.</p>
-    </div>
-    <div class="card">
-      <h3>No Data Selling</h3>
-      <p>TradeFlow does not sell or share your personal data with third parties.</p>
-    </div>
-    <div class="card">
-      <h3>Minimal Analytics</h3>
-      <p>Anonymous analytics may be used only to improve app stability and performance.</p>
-    </div>
-  </div>
-</section>
 
 <section>
   <h2>Support</h2>
@@ -427,6 +352,7 @@
     </p>
     <div class="support-actions">
       <a class="nav-link primary" href="mailto:info@trade-flowuk.com">Email support</a>
+      <a class="nav-link" href="/privacy">Privacy</a>
       <a class="nav-link" href="/support">Support page</a>
     </div>
   </div>
@@ -435,8 +361,10 @@
 <footer>
   © 2025 <strong>Buildtech Solutions</strong> ·
   <a href="/about">About Us</a> ·
+  <a href="/privacy">Privacy Policy</a> ·
   <a href="/support">Support</a>
 </footer>
 
 </body>
 </html>
+
