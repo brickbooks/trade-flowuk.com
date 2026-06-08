@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TradeFlow - Booking Off Made Simple</title>
+  <meta name="description" content="TradeFlow is a modern booking-off and PDF generation app built for construction workers and contractors." />
+
+  <style>
+    :root {
+      --bg: #050509;
+      --panel: rgba(255, 255, 255, 0.075);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.24);
+      --purple: #7d35f2;
+      --purple-soft: #b786ff;
+      --text: #ffffff;
+      --muted: #d9d1ff;
+      --soft: rgba(217, 209, 255, 0.72);
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(680px 480px at 12% 4%, rgba(125, 53, 242, 0.34), transparent 68%),
+        radial-gradient(620px 420px at 88% 12%, rgba(183, 134, 255, 0.20), transparent 64%),
+        linear-gradient(180deg, #101020 0%, #050509 56%, #020204 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 68%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1140px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(5, 5, 9, 0.72);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 138px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 14px 24px rgba(125, 53, 242, 0.28));
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 2px;
+      padding-left: 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+      line-height: 1.15;
+    }
+
+    .brand-copy strong {
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .brand-copy span {
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a,
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 680;
+      color: rgba(255, 255, 255, 0.92);
+      border: 1px solid transparent;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .nav-links a {
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .nav-links a:hover,
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .button {
+      background: linear-gradient(135deg, rgba(125, 53, 242, 0.96), rgba(183, 134, 255, 0.78));
+      box-shadow: 0 18px 48px rgba(125, 53, 242, 0.28);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.075);
+      box-shadow: none;
+      border-color: var(--line);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(500px, 1.12fr);
+      align-items: center;
+      gap: 52px;
+      min-height: calc(100vh - 78px);
+      padding: 72px 0 64px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(183, 134, 255, 0.34);
+      background: rgba(125, 53, 242, 0.12);
+      font-size: 13px;
+      font-weight: 720;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 0 5px rgba(125, 53, 242, 0.34), 0 0 24px rgba(183, 134, 255, 0.92);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: 0.94;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 680px;
+      margin-top: 38px;
+    }
+
+    .proof {
+      min-height: 92px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(18px);
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .proof span {
+      display: block;
+      margin-top: 8px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .product-panel {
+      position: relative;
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .product-panel::before {
+      content: none;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(125, 53, 242, 0.20), transparent 44%);
+      pointer-events: none;
+    }
+
+    .app-preview {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 0;
+      filter: drop-shadow(0 28px 70px rgba(0, 0, 0, 0.42)) drop-shadow(0 0 42px rgba(125, 53, 242, 0.20));
+    }
+
+    .mock-window {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #08080f;
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .window-top span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.38);
+    }
+
+    .screen {
+      padding: 18px;
+    }
+
+    .screen-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .screen-logo {
+      width: 192px;
+      max-width: 62%;
+      filter: drop-shadow(0 18px 28px rgba(125, 53, 242, 0.30));
+    }
+
+    .status {
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(125, 53, 242, 0.34);
+      border: 1px solid rgba(183, 134, 255, 0.30);
+      font-size: 12px;
+      font-weight: 760;
+      white-space: nowrap;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric,
+    .wide-metric {
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .wide-metric {
+      grid-column: 1 / -1;
+    }
+
+    .metric span,
+    .wide-metric span {
+      display: block;
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .metric strong,
+    .wide-metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .bars {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.11);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--purple), var(--purple-soft));
+    }
+
+    .section {
+      padding: 42px 0 74px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      max-width: 420px;
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      min-height: 196px;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+    }
+
+    .icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(125, 53, 242, 0.96), rgba(183, 134, 255, 0.72));
+      box-shadow: 0 16px 34px rgba(125, 53, 242, 0.22);
+    }
+
+    .feature h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .feature p {
+      margin: 10px 0 0;
+      color: var(--soft);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .support {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 62px;
+      padding: 26px;
+      border: 1px solid rgba(183, 134, 255, 0.24);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(125, 53, 242, 0.20), rgba(255, 255, 255, 0.06)),
+        var(--panel);
+      box-shadow: 0 18px 58px rgba(0, 0, 0, 0.24);
+    }
+
+    .support h2 {
+      font-size: clamp(27px, 3vw, 38px);
+    }
+
+    .support p {
+      max-width: 720px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      color: rgba(217, 209, 255, 0.74);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .product-panel {
+        max-width: 720px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title,
+      .support {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 28px, 1140px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .brand-logo {
+        width: 108px;
+      }
+
+      .brand-copy {
+        display: none;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav-links a {
+        min-height: 38px;
+        padding: 0 13px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .proof-row,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .screen-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .screen-logo {
+        max-width: 86%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <nav class="shell nav" aria-label="Primary">
+      <a class="brand" href="#" aria-label="TradeFlow home">
+        <img class="brand-logo" src="assets/tradeflow-logo-cropped.png" alt="TradeFlow" />
+        <span class="brand-copy">
+          <strong>Buildtech Solutions</strong>
+          <span>Price-work booking made simple</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#support">Support</a>
+        <a href="mailto:info@trade-flowuk.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section class="shell hero">
+      <div>
+        <div class="eyebrow">Built for trades on price</div>
+        <h1>Booking off, cleaned up for site work.</h1>
+        <p>
+          TradeFlow gives construction workers and contractors a sharper way to record work,
+          calculate totals, and send professional booking sheets without wrestling spreadsheets.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="mailto:info@trade-flowuk.com">Get support</a>
+          <a class="button secondary" href="#features">View features</a>
+        </div>
+
+        <div class="proof-row" aria-label="TradeFlow highlights">
+          <div class="proof">
+            <strong>PDF</strong>
+            <span>Export clean booking sheets ready to send.</span>
+          </div>
+          <div class="proof">
+            <strong>Fast</strong>
+            <span>Keep work entries tidy from phone to desktop.</span>
+          </div>
+          <div class="proof">
+            <strong>Clear</strong>
+            <span>Rates, totals, and job details in one place.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="product-panel" aria-label="TradeFlow product preview">
+        <img class="app-preview" src="assets/tradeflow-phone-preview.png" alt="TradeFlow app screens showing rates and booking off" />
+      </aside>
+    </section>
+
+    <section id="features" class="shell section">
+      <div class="section-title">
+        <h2>A cleaner flow from site notes to professional paperwork.</h2>
+        <p>Designed around the real admin trades deal with every week: rates, quantities, totals, and tidy exports.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="icon" aria-hidden="true">✓</div>
+          <h3>Simple booking sheets</h3>
+          <p>Capture jobs, items, measurements, and rates in a structure that stays readable.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon" aria-hidden="true">£</div>
+          <h3>Instant totals</h3>
+          <p>See the money clearly as entries build up, with less manual checking at the end.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon" aria-hidden="true">↗</div>
+          <h3>Professional PDFs</h3>
+          <p>Export polished paperwork with a consistent TradeFlow finish every time.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="support" class="shell support">
+      <div>
+        <h2>Support from Buildtech Solutions.</h2>
+        <p>
+          For help with TradeFlow or any Buildtech Solutions product or service,
+          contact <a href="mailto:info@trade-flowuk.com">info@trade-flowuk.com</a>.
+        </p>
+      </div>
+      <a class="button" href="mailto:info@trade-flowuk.com">Email support</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 Buildtech Solutions. TradeFlow.</span>
+      <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/support">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
